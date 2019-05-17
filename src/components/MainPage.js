@@ -19,7 +19,7 @@ class MainPage extends React.Component {
         })
     }
     render() {
-
+        console.log(this.state.listOfHistory)
         return (
             <div className='ui container'>
 
