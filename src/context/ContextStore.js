@@ -17,14 +17,7 @@ export class ContextStore extends React.Component {
         })
 
     }
-    handleClickAdd = (itemObj, itemObjHistory) => {
-        let itemArr = [...this.state.listOfItem, itemObj]
-        let itemArr2 = this.state.listOfHistory.unshift(itemObjHistory)
-        this.setState({
-            listOfItem: itemArr,
-            listOfHistory: itemArr2
-        })
-    }
+
 
 
     onClickClearHistoryList = () => {

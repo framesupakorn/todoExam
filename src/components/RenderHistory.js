@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom'
 
 class RenderHistory extends React.Component {
     
-    componentDidUpdate(prevProps){
-      
-        if(prevProps){
-        this.setState({kdx : this.state.kdx+1 })}
-    }
+   
     static contextType = Context
 
     render() {
@@ -22,8 +18,7 @@ class RenderHistory extends React.Component {
                 Date : {`${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`}||
                 timeSubmitted : {item.timeSubmit}||
                 itemStatus: {item.itemStatus}||
-                key:{item.finalIndexKey}||
-                name : {item.itemName}
+                 name : {item.itemName}
 
 
             </div>)
@@ -44,7 +39,7 @@ class RenderHistory extends React.Component {
                             Clear History List
                          </button> <br /> <br />
                         <Link to='/' >
-                            <button>
+                            <button onClick={()=> this.context.onS}>
                                 <i className='left arrow red icon' />
                                 Back To MainPage
                             </button>

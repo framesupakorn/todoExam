@@ -1,29 +1,33 @@
 import React from 'react';
 import uuid from 'uuid'
+import Context from '../context/ContextStore';
 
 class AddToDo extends React.Component {
+    static contextType = Context;
     state = {
         text: '',
-        indexKey: 0,
+
         isTyping: true
     }
 
     onClickAdd = (event) => {
         event.preventDefault();
 
+
         const newitem = this.refs.createdText.value
 
         const listOfItem = this.props.listOfItem
-        const indexKey = this.state.indexKey
-        let finalIndexKey = indexKey + 1
+
+
 
         if (listOfItem.find(item => { return item.itemName === newitem.trim() }) === undefined && newitem.trim() !== '') {
+
             let itemObj = {
                 itemName: newitem,
                 itemStatus: 'Add',
                 itemId: uuid(),
                 timeSubmit: new Date().toLocaleTimeString(),
-                finalIndexKey: finalIndexKey,
+
                 isEditing: false,
                 isChecking: false
             }
@@ -32,7 +36,7 @@ class AddToDo extends React.Component {
                 itemStatus: 'Add',
                 itemId: uuid(),
                 timeSubmit: new Date().toLocaleTimeString(),
-                finalIndexKey: finalIndexKey,
+
                 isEditing: false,
                 isChecking: false
             }
@@ -40,10 +44,8 @@ class AddToDo extends React.Component {
             this.props.onClickAdd(itemObj, itemObjHistory)
             this.refs.createdText.value = ''
 
-            this.setState({
-                indexKey: finalIndexKey,
-                isTyping: true
-            })
+
+
         } else if (newitem.trim() === '') {
             alert('you cant insert null value')
             this.refs.createdText.value = ''
